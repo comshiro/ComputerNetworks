@@ -1,0 +1,8 @@
+#!/bin/bash
+
+user=$(whoami)
+
+echo "Utilizatorul curent este:"
+grep "$user:" /etc/passwd 
+echo "Shell-ul utilizat este: "
+grep "$user:" /etc/passwd | cut -d ':' -f 7

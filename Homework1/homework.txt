@@ -1,0 +1,43 @@
+Comezi de la tastatura de la client => prin pipe/fifo/socketpair la server -> prin child processes (fork) 
+    in the child we run the command 
+    ->result sent back to the parent(server app) 
+    => sent back to the client
+    client outputs result to the terminal
+
+client <=> parent server
+client <=/=> child processes in server
+child<=>parent
+
+enter means the command is sent to server
+
+ex prima comanda: 
+login: comshiro
+
+its sent to the server
+
+and the server sends back sth like "7 success"
+rezultatul trimis inapoi la client trebuie sa aiba nr de bytes al raspunsului
+
+configuration file:
+text file
+
+users.txt
+comshiro
+student1
+student2
+
+-> used for login
+
+we need to check if login was seuccessful b4 get logged users
+
+proc/<pid>/status de aici luam info pr get-proc-info
+
+quit putem sa facem direct in client
+
+nu avem voie exec!!
+
+client => server cu fifos
+child => parent pipe/fifo/socketpairs
+
+citim primii 4 bytes cand citim rezultatul sa vedem lungimea
+

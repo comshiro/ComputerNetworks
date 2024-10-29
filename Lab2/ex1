@@ -1,0 +1,4 @@
+﻿#!/bin/bash
+
+
+kill `ps -aux | grep -m 1 "vim text.txt"| cut -d" " -f 5` 

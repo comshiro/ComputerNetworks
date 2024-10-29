@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "specifica fisier/director."
+    exit 1
+fi
+
+if [ -e "$1" ]; then
+    echo "Numele este: "
+    basename "$1"
+    echo "Ultima dată modificat: "
+    stat -c %y "$1"
+else
+    echo "$1 nu este un fișier sau director valid."
+    exit 1
+fi
+

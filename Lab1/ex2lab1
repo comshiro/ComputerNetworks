@@ -1,0 +1,28 @@
+///2. Scrieti un program C care simuleaza comanda grep.
+
+
+
+
+void main(char arg[]){
+
+    int count=0;
+    p = strtok (arg," -"");
+  while (p != NULL)
+  {
+    switch(p[0]){
+        case '-': 
+            if(p[0]=='c')
+                count = 1;
+    
+    p = strtok (NULL, " -"");
+  }
+
+
+
+
+
+}
+
+
+
+
