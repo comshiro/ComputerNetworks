@@ -210,16 +210,16 @@ int main()
                         struct utmp *entry;
                         setutent(); // Rewind the utmp file to the start
 
-                        char logged_users_info[4096] = ""; // Increased buffer size
+                        char logged_users_info[4096] = ""; 
 
                         while ((entry = getutent()) != NULL)
                         {
                             if (entry->ut_type == USER_PROCESS)
                             {
-                                char buffer[512]; // Increased buffer size for each entry
+                                char buffer[512];
                                 snprintf(buffer, sizeof(buffer), "Username: %s, Host: %s, Login time: %d\n",
-                                         entry->ut_user, entry->ut_host, entry->ut_tv.tv_sec); // Changed %ld to %d
-                                strcat(logged_users_info, buffer);                             // Append to result
+                                         entry->ut_user, entry->ut_host, entry->ut_tv.tv_sec); 
+                                strcat(logged_users_info, buffer);         
                             }
                         }
                         endutent(); // Close the utmp file
@@ -304,8 +304,8 @@ int main()
                 p = strtok(NULL, " ");
             }
 
-            /// COPILUL INCARCA REZULTATUL IN SOCKEPAIR
-            int resultSz = strlen(result) + 1; // THIS WOULD NOT BE A POINTER, IT WOULD BE A NUMBER THAT I CHOOSE, IN AN ADDRESS (0x00000005)
+            /// The child writes the result into the socketpair
+            int resultSz = strlen(result) + 1;
             write(s_c2p[1], &resultSz, sizeof(int));
             write(s_c2p[1], result, resultSz);
             printf("Result: %s\n", result);
@@ -316,18 +316,18 @@ int main()
 
         default:
 
-            if (write(p_p2c[1], buf, strlen(buf)) == -1)
+            if (write(p_p2c[1], buf, strlen(buf)) == -1) //Writing the command from client to the pipe
             {
                 perror("Eroare la 'write' din pipe parent -> child");
             }
             int n_buf[1];
-            bytes_read = read(s_c2p[0], n_buf, sizeof(int));
+            bytes_read = read(s_c2p[0], n_buf, sizeof(int));//Reading the size of the result sent by the child
             if (bytes_read == -1)
             {
                 perror("Eroare la citirea din pipe child -> parent");
             }
             char buf[BUF_SIZE];
-            bytes_read = read(s_c2p[0], buf, BUF_SIZE - 1);
+            bytes_read = read(s_c2p[0], buf, *n_buf+1); 
             if (bytes_read == -1)
             {
                 perror("Eroare la citirea din pipe child -> parent");
