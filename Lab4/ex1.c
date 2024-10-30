@@ -1,3 +1,7 @@
+/* Creati un program in care tatal trimite un sir fiului. Acesta concateneaza la
+sirul primit un alt sir si va intoarce procesului tata raspunsul obtinut.
+Pentru comunicare se va folosi primitiva socketpair.*/
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdio.h>
