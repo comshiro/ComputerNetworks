@@ -11,7 +11,7 @@ private:
     std::string serverAddress;
     int serverPort;
     struct sockaddr_in serverAddr;
-
+    bool running;
 public:
     // Constructor to initialize the server address and port
     Client(const std::string& address, int port);

@@ -68,13 +68,31 @@ std::string Client::receiveResponse()
 void Client::start()
 {
     connectToServer();
+    bool running = true;
 
-    std::string command;
-    std::cout << "Enter command: ";
-    std::getline(std::cin, command);
+    while (running)
+    {
+        std::string command;
+        std::cout << "Enter command: ";
+        std::getline(std::cin, command);
 
-    sendCommand(command);
+        if (command == "exit")
+        {
+            running = false;
+            closeConnection();
+        }
+        else
+        {
+            sendCommand(command);
 
-    std::string response = receiveResponse();
-    std::cout << "Response from server: " << response << std::endl;
+            std::string response = receiveResponse();
+            std::cout << "Response from server: " << response << std::endl;
+        }
+    }
+}
+
+void Client::closeConnection()
+{
+    close(socketFd);
+    socketFd = -1;
 }
