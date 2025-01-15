@@ -1,5 +1,7 @@
 #include <iostream>
 #include <unistd.h>
+#include <stdexcept>
+#include <sstream>
 #include <cstring>
 #include <sys/socket.h>
 #include <string>
@@ -15,16 +17,16 @@ ClientHandler::ClientHandler(int clientSocket) : clientSocket(clientSocket) {}
 void ClientHandler::processCommand(const std::string& command) {
     XMLManager xmlManager("trains.xml");
 
-    if (command.rfind("GET_ARRIVALS", 0) == 0) {
-        size_t firstSpace = command.find(' ', 12);
-        std::string trainId = command.substr(12, firstSpace - 12); // Extract train ID from command
-        std::string stationName = command.substr(firstSpace + 1); // Extract station name from command
-        std::string response = xmlManager.getArrivals(trainId, stationName);
-        write(clientSocket, response.c_str(), response.length() + 1);
+     if (command.rfind("GET_ARRIVALS", 0) == 0) {
+      size_t firstSpace = command.find(' ', 13);
+      std::string trainId = command.substr(13, firstSpace - 13); // Extract train ID from command
+      std::string stationName = command.substr(firstSpace + 1); // Extract station name from command
+      std::string response = xmlManager.getArrivals(trainId, stationName);
+            write(clientSocket, response.c_str(), response.length() + 1);
     }
     else if (command.rfind("GET_DEPARTURES", 0) == 0) {
-        size_t firstSpace = command.find(' ', 14);
-        std::string trainId = command.substr(14, firstSpace - 14); // Extract train ID from command
+        size_t firstSpace = command.find(' ', 15);
+        std::string trainId = command.substr(15, firstSpace - 15); // Extract train ID from command
         std::string stationName = command.substr(firstSpace + 1); // Extract station name from command
         std::string response = xmlManager.getDepartures(trainId, stationName);
         write(clientSocket, response.c_str(), response.length() + 1);
@@ -35,9 +37,9 @@ void ClientHandler::processCommand(const std::string& command) {
         write(clientSocket, response.c_str(), response.length() + 1);
     }
     else if (command.rfind("ANNOUNCE_DELAY", 0) == 0) {
-        size_t firstSpace = command.find(' ', 14);
+        size_t firstSpace = command.find(' ', 15);
         size_t secondSpace = command.find(' ', firstSpace + 1);
-        std::string trainId = command.substr(14, firstSpace - 14); // Extract train ID from command
+        std::string trainId = command.substr(15, firstSpace - 15); // Extract train ID from command
         std::string stationName = command.substr(firstSpace + 1, secondSpace - firstSpace - 1); // Extract station name from command
         int delayMinutes = std::stoi(command.substr(secondSpace + 1)); // Extract delay minutes from command
         xmlManager.announceDelay(trainId, stationName, delayMinutes);

@@ -5,7 +5,7 @@
         <ruta>Cluj Napoca - Deva</ruta>
         <gari>
             <gara>
-                <numeGara>Cluj Napoca</numeGara>
+                <numeGara>Cluj-Napoca</numeGara>
                 <sosire>-</sosire>
                 <plecare>00:36</plecare>
                 <intarziere>0</intarziere>
@@ -13,7 +13,7 @@
                 <estimareSosire>-</estimareSosire>
             </gara>
             <gara>
-                <numeGara>Campia Turzii</numeGara>
+                <numeGara>Campia-Turzii</numeGara>
                 <sosire>01:37</sosire>
                 <plecare>01:38</plecare>
                 <intarziere>0</intarziere>
@@ -24,12 +24,12 @@
                 <numeGara>Aiud</numeGara>
                 <sosire>02:17</sosire>
                 <plecare>02:19</plecare>
-                <intarziere>0</intarziere>
-                <estimarePlecare>02:19</estimarePlecare>
-                <estimareSosire>02:17</estimareSosire>
+                <intarziere>5</intarziere>
+                <estimarePlecare>02:24</estimarePlecare>
+                <estimareSosire>02:22</estimareSosire>
             </gara>
             <gara>
-                <numeGara>Alba Iulia</numeGara>
+                <numeGara>Alba-Iulia</numeGara>
                 <sosire>03:03</sosire>
                 <plecare>03:05</plecare>
                 <intarziere>0</intarziere>
@@ -72,10 +72,10 @@
     </tren>
     <tren>
         <nume>IR1631</nume>
-        <ruta>Bucuresti Nord - Galati</ruta>
+        <ruta>Bucuresti-Nord - Galati</ruta>
         <gari>
             <gara>
-                <numeGara>Bucuresti Nord</numeGara>
+                <numeGara>Bucuresti-Nord</numeGara>
                 <sosire>-</sosire>
                 <plecare>05:30</plecare>
                 <intarziere>0</intarziere>
@@ -83,7 +83,7 @@
                 <estimareSosire>-</estimareSosire>
             </gara>
             <gara>
-                <numeGara>Ploiesti Sud</numeGara>
+                <numeGara>Ploiesti-Sud</numeGara>
                 <sosire>06:08</sosire>
                 <plecare>06:09</plecare>
                 <intarziere>0</intarziere>
